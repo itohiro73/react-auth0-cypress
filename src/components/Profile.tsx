@@ -4,9 +4,10 @@ import LoginButton from "./LoginButton";
 import LogoutButton from "./LogoutButton";
 
 const Profile = () => {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading} = useAuth0();
 
   return (
+    isLoading ? (<div>Loading...</div>) :
     isAuthenticated ? (
       <div>
         <img src={user.picture} alt={user.name} />
