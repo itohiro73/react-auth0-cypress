@@ -1,27 +1,19 @@
 import React from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import LoginButton from "./LoginButton";
-import LogoutButton from "./LogoutButton";
 
 const Profile = () => {
-  const { user, isAuthenticated, isLoading} = useAuth0();
-
-  return (
-    isLoading ? (<div>Loading...</div>) :
-    isAuthenticated ? (
+  const { user } = useAuth0();
+  if (user) {
+    return (
       <div>
+        <h2>Profile</h2>
         <img src={user.picture} alt={user.name} />
-        <h2>{user.name}</h2>
+        <h3>{user.name}</h3>
         <p>{user.email}</p>
-        <LogoutButton/>
       </div>
-    ) : (
-      <div>
-        <h1>Login</h1>
-        <LoginButton/>
-      </div>
-    )
-  );
+    );
+  }
+  return <div>User Profile is blank</div>
 };
 
 export default Profile;

@@ -11,7 +11,7 @@ describe('Login', () => {
   it('.should() - have Log out button after login', () => {
     cy.login(Cypress.env('auth_username'), Cypress.env("auth_password"))
       .then(() => {
-        cy.get('h2').should('contain', 'Test User')
+        cy.get('h2').should('contain', 'Home')
         cy.contains('Log Out').click()
         cy.contains('Log In')
       })

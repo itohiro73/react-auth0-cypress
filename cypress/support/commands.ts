@@ -12,9 +12,11 @@
 // -- This is a parent command --
 /// <reference types="cypress" />
 
+import { AppState } from "@auth0/auth0-react/dist/auth0-provider";
+
 Cypress.Commands.add(
   'login',
-  (username: string, password: string, appState: { targetUrl: string } = {targetUrl: '/'}) => {
+  (username: string, password: string, appState: AppState = {targetUrl: '/'}) => {
     cy.log(`Logging in as ${username}`);
     const options = {
       method: 'POST',
