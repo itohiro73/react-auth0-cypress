@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuth0 } from '@auth0/auth0-react';
-import LoginButton from "./LoginButton";
-import { Spinner } from "@chakra-ui/core";
+import Loading from "./Loading";
+import Navbar from "./Navbar";
 
 function AuthWrapper({ children }: JSX.ElementChildrenAttribute ) {
   const {
@@ -13,9 +13,7 @@ function AuthWrapper({ children }: JSX.ElementChildrenAttribute ) {
   if (isLoading) {
     return (
       <>
-        <Spinner size="lg"/>
-        <br/>
-        Loading...
+        <Loading />
       </>
     )
   }
@@ -23,16 +21,20 @@ function AuthWrapper({ children }: JSX.ElementChildrenAttribute ) {
     return <>Oops... {error.message}</>;
   }
   if (isAuthenticated) {
-    return <>{children}</>;
+    return (
+      <>
+        <header>
+          <Navbar/>
+        </header>
+        {children}
+      </>
+    )
   }
   else {
     return (
-      <div>
-        <br/>
-        <Spinner size="lg"/>
-        <br/>
-        <LoginButton/>
-      </div>
+      <>
+        {children}
+      </>
     )
   }
 }

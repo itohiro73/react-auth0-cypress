@@ -3,7 +3,6 @@ import './App.css';
 import { Router, Switch } from 'react-router-dom';
 import { Auth0Provider } from "@auth0/auth0-react";
 import { createBrowserHistory } from 'history';
-import Navbar from "./components/Navbar";
 import Home from "./components/Home";
 import Menu1 from "./components/Menu1";
 import Menu2 from "./components/Menu2";
@@ -31,9 +30,6 @@ function App() {
       >
         <Router history={history}>
           <AuthWrapper>
-            <header>
-              <Navbar/>
-            </header>
             <Switch>
               <ProtectedRoute exact path="/" component={Home}/>
               <ProtectedRoute path="/menu1" component={Menu1}/>
