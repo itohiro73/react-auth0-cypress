@@ -5,6 +5,9 @@ import { Auth0Provider } from "@auth0/auth0-react";
 import { createBrowserHistory } from 'history';
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
+import Menu1 from "./components/Menu1";
+import Menu2 from "./components/Menu2";
+import Menu3 from "./components/Menu3";
 import Profile from "./components/Profile";
 import AuthWrapper from "./components/AuthWrapper";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -33,6 +36,9 @@ function App() {
             </header>
             <Switch>
               <ProtectedRoute exact path="/" component={Home}/>
+              <ProtectedRoute path="/menu1" component={Menu1}/>
+              <ProtectedRoute path="/menu2" component={Menu2}/>
+              <ProtectedRoute path="/menu3" component={Menu3}/>
               <ProtectedRoute path="/profile" component={Profile}/>
             </Switch>
           </AuthWrapper>
