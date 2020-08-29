@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 /// <reference path="../support/index.d.ts" />
-// @ts-ignore
+
 describe('Navigation and Routing', () => {
   beforeEach(() => {
     cy.visit('/')
