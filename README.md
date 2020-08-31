@@ -4,19 +4,23 @@ This is a [React](https://reactjs.org/) project template with [Auth0](https://au
 ## Getting Started
 This project template requires Auth0 configuration as a prerequisite. Please follow the instruction below to get started.
 
-#### Auth0 set-up
-1. Please sign-up [Auth0](https://auth0.com/) first if you haven't already :)
+### Auth0 set-up
 
-2. Open Auth0 [Applications section](https://manage.auth0.com/#/applications) to create a new application
+#### 1. Please sign-up [Auth0](https://auth0.com/) first if you haven't already :)
+
+#### 2. Open Auth0 [Applications section](https://manage.auth0.com/#/applications) to create a new application
+
 ![image](https://user-images.githubusercontent.com/2220637/91725337-8c26b900-ebd9-11ea-956a-e5fa3f42fd1d.png)
 
-3. Name it as you like, choose "Single Page Web Application" and press "CREATE".
+#### 3. Name it as you like, choose "Single Page Web Application" and press "CREATE".
+
 ![image](https://user-images.githubusercontent.com/2220637/91726404-22a7aa00-ebdb-11ea-8223-78e6d2c91441.png)
 
-4. Open `Settings` tab and look for `Domain` and `ClientID`
+#### 4. Open `Settings` tab and look for `Domain` and `ClientID`
+
 ![image](https://user-images.githubusercontent.com/2220637/91728877-b169f600-ebde-11ea-8f63-dd9d50edf51c.png)
 
-5. Create `.env` file manually and put your `Domain` & `ClientID` as below
+#### 5. Create `.env` file manually and put your `Domain` & `ClientID` as below
 
    **.env file** ***(YOU SHOULD NOT COMMIT THIS FILE)*** 
    ```
@@ -24,20 +28,23 @@ This project template requires Auth0 configuration as a prerequisite. Please fol
    REACT_APP_AUTH0_CLIENT_ID="Copy & paste your ClientID here"
    ```
 
-6. Configure your `Callback URLs`, `Logout URLs`, `Allowed Web Origins` as `http://localhost:3000`
+#### 6. Configure your `Callback URLs`, `Logout URLs`, `Allowed Web Origins` as `http://localhost:3000`
+
 ![image](https://user-images.githubusercontent.com/2220637/91729125-0c035200-ebdf-11ea-9acd-82ca1d8e875a.png)
 
-7. Create a test user from Auth0 [Users](https://manage.auth0.com/#/users) section.
+#### 7. Create a test user from Auth0 [Users](https://manage.auth0.com/#/users) section.
+
 ![image](https://user-images.githubusercontent.com/2220637/91730432-d65f6880-ebe0-11ea-82dc-5dc8267ea9db.png)
 
-8. Make sure to use `Username-Password-Authentication` so that it can be used via cypress tests.
+#### 8. Make sure to use `Username-Password-Authentication` so that it can be used via cypress tests.
+
 ![image](https://user-images.githubusercontent.com/2220637/91730793-2ccca700-ebe1-11ea-9c16-791e3f0b56d3.png)
 
 Take note of test email and password.
 
-#### Set-up Cypress
+### Set-up Cypress
 
-1. Create a file `cypress.env.json` manually and put these credential information from Auth0.
+#### 1. Create a file `cypress.env.json` manually and put these credential information from Auth0.
 
    **cypress.env.json file** ***(YOU SHOULD NOT COMMIT THIS FILE)*** 
    ```
