@@ -55,10 +55,9 @@ const Navbar = () => {
             </MenuButton>
             <MenuList>
               <ReactRouterLink to='/profile'><MenuItem id="profile">Profile</MenuItem></ReactRouterLink>
-              <MenuItem id="logout" onClick={() => logout({ returnTo: window.location.origin, federated: true })}>Log Out</MenuItem>
+              <MenuItem id="logout" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</MenuItem>
             </MenuList>
           </Menu>
-
         </Box>
       </Flex>
     </>
