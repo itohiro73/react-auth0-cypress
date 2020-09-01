@@ -28,3 +28,6 @@ yarn-error.log*
 
 # IDEA files
 .idea
+
+# Tailwind generated file
+src/index.css
