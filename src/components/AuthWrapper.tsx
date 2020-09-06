@@ -23,9 +23,7 @@ function AuthWrapper({ children }: JSX.ElementChildrenAttribute ) {
   if (isAuthenticated) {
     return (
       <>
-        <header>
-          <Navbar/>
-        </header>
+        <Navbar/>
         {children}
       </>
     )
