@@ -17,7 +17,7 @@ const Navbar = () => {
           <a href={"/"} className="text-xl text-white font-body">Auth0/Cypress React</a>
         </div>
         <div className="sm:hidden">
-          <button onClick={toggleOpen} type="button" className="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
+          <button id="hamburger-menu" onClick={toggleOpen} type="button" className="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
             <svg className="h-8 w-8 fill-current" viewBox="0 0 24 24">
               {
                 open ?
@@ -29,8 +29,7 @@ const Navbar = () => {
           </button>
         </div>
       </div>
-      {/* eslint-disable-next-line no-useless-concat */}
-      <nav className={open ? "block" : "hidden" + " sm:block"}>
+      <nav className={(open ? "block" : "hidden") + " sm:block"}>
         <div className="px-2 pt-2 pb-4 sm:flex sm:p-0">
           <Link to="/menu1" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">Menu1</Link>
           <Link to="/menu2" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:m-0 sm:ml-2">Menu2</Link>
@@ -44,12 +43,10 @@ const Navbar = () => {
             <img className="h-8 w-8 border-1 border-gray-400 rounded-full object-cover" src={user.picture} alt={user.name}/>
             <span className="ml-3 font-semibold text-white">{user.name}</span>
           </button>
-          <>
-            <div className="mt-4">
-              <Link to="/profile" id="profile-mobile" className="block text-gray-400 hover:text-white">Profile</Link>
-              <button id="logout-mobile" onClick={() => {logout({returnTo: window.location.origin})}} className="mt-2 block text-gray-400 hover:text-white">Log Out</button>
-            </div>
-          </>
+          <div className="mt-4">
+            <Link to="/profile" className="block text-gray-400 hover:text-white"><button id="profile-mobile">Profile</button></Link>
+            <button id="logout-mobile" onClick={() => {logout({returnTo: window.location.origin})}} className="mt-2 block text-gray-400 hover:text-white">Log Out</button>
+          </div>
         </div>
       </nav>
     </header>
