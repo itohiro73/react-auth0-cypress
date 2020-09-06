@@ -1,66 +1,58 @@
-import React from "react";
-import { Avatar, Box, Flex, Heading, Link, Menu, MenuButton, MenuItem, MenuList, } from "@chakra-ui/core";
-import { Link as ReactRouterLink } from "react-router-dom";
+import React, { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
+import AccountDropdown from "./AccountDropdown";
+import { Link } from "react-router-dom";
 
-const NavMenuItem = ({ to, children }: any) => (
-// @ts-ignore
-  <Link mt={{ base: 4, md: 0 }} mr={4} display="block" as={ReactRouterLink} to={to}>
-    {children}
-  </Link>
-);
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
   const { user, logout } = useAuth0();
+  const toggleOpen = () => {
+    setOpen(!open)
+  }
   return (
-    <>
-      <Flex
-        as="nav"
-        align="center"
-        justify="space-between"
-        wrap="wrap"
-        padding="1.0rem"
-        bg="teal.400"
-        color="white"
-      >
-        <Flex align="center" mr={5}>
-          <Heading as="h1" size="lg" letterSpacing={"-.1rem"}>
-            <ReactRouterLink to='/'>Auth0 / React Application</ReactRouterLink>
-          </Heading>
-        </Flex>
-
-        <Box
-          display="flex"
-          width="auto"
-          alignItems="center"
-          flexGrow={1}
-        >
-        </Box>
-        <NavMenuItem to='/menu1'>Menu1</NavMenuItem>
-        <NavMenuItem to='/menu2'>Menu2</NavMenuItem>
-        <NavMenuItem to='/menu3'>Menu3</NavMenuItem>
-
-        <Box
-          display="block"
-          mt={{ base: 4, md: 0 }}
-          color="gray.600"
-        >
-          <Menu closeOnSelect>
-            <MenuButton id="avatar-menu">
-              <Avatar
-                size="sm"
-                name={user.name}
-                src={user.picture}
-              />
-            </MenuButton>
-            <MenuList>
-              <ReactRouterLink to='/profile'><MenuItem id="profile">Profile</MenuItem></ReactRouterLink>
-              <MenuItem id="logout" onClick={() => logout({ returnTo: window.location.origin })}>Log Out</MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-      </Flex>
-    </>
+    <header className="bg-gray-900 sm:flex sm:justify-between sm:items-center sm:px-4 sm:py-3">
+      <div className="flex items-center justify-between px-4 py-3 sm:p-0">
+        <div>
+          <a href={"/"} className="text-xl text-white font-body">Auth0/Cypress React</a>
+        </div>
+        <div className="sm:hidden">
+          <button onClick={toggleOpen} type="button" className="block text-gray-500 hover:text-white focus:text-white focus:outline-none">
+            <svg className="h-8 w-8 fill-current" viewBox="0 0 24 24">
+              {
+                open ?
+                <path fillRule="evenodd" d="M18.278 16.864a1 1 0 0 1-1.414 1.414l-4.829-4.828-4.828 4.828a1 1 0 0 1-1.414-1.414l4.828-4.829-4.828-4.828a1 1 0 0 1 1.414-1.414l4.829 4.828 4.828-4.828a1 1 0 1 1 1.414 1.414l-4.828 4.829 4.828 4.828z"/>
+                :
+                <path fillRule="evenodd" d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"/>
+              }
+            </svg>
+          </button>
+        </div>
+      </div>
+      {/* eslint-disable-next-line no-useless-concat */}
+      <nav className={open ? "block" : "hidden" + " sm:block"}>
+        <div className="px-2 pt-2 pb-4 sm:flex sm:p-0">
+          <Link to="/menu1" className="block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800">Menu1</Link>
+          <Link to="/menu2" className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:m-0 sm:ml-2">Menu2</Link>
+          <Link to="/menu3"  className="mt-1 block px-2 py-1 text-white font-semibold rounded hover:bg-gray-800 sm:m-0 sm:ml-2">Menu3</Link>
+          <div className="hidden sm:block sm:ml-6">
+            <AccountDropdown />
+          </div>
+        </div>
+        <div className="px-4 py-5 border-t border-gray-800 sm:hidden">
+          <button id="avatar-menu-mobile" className="flex items-center">
+            <img className="h-8 w-8 border-1 border-gray-400 rounded-full object-cover" src={user.picture} alt={user.name}/>
+            <span className="ml-3 font-semibold text-white">{user.name}</span>
+          </button>
+          <>
+            <div className="mt-4">
+              <Link to="/profile" id="profile-mobile" className="block text-gray-400 hover:text-white">Profile</Link>
+              <button id="logout-mobile" onClick={() => {logout({returnTo: window.location.origin})}} className="mt-2 block text-gray-400 hover:text-white">Log Out</button>
+            </div>
+          </>
+        </div>
+      </nav>
+    </header>
   );
 };
 

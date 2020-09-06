@@ -22,7 +22,6 @@ const onRedirectCallback = (appState: AppState) => {
 
 function App() {
   return (
-    <AppStyles>
       <div className="App">
         <Auth0Provider
             domain={process.env.REACT_APP_AUTH0_DOMAIN ?? ''}
@@ -32,18 +31,19 @@ function App() {
         >
           <Router history={history}>
             <AuthWrapper>
-              <Switch>
-                <ProtectedRoute exact path="/" component={Home}/>
-                <ProtectedRoute path="/menu1" component={Menu1}/>
-                <ProtectedRoute path="/menu2" component={Menu2}/>
-                <ProtectedRoute path="/menu3" component={Menu3}/>
-                <ProtectedRoute path="/profile" component={Profile}/>
-              </Switch>
+              <AppStyles>
+                <Switch>
+                  <ProtectedRoute exact path="/" component={Home}/>
+                  <ProtectedRoute path="/menu1" component={Menu1}/>
+                  <ProtectedRoute path="/menu2" component={Menu2}/>
+                  <ProtectedRoute path="/menu3" component={Menu3}/>
+                  <ProtectedRoute path="/profile" component={Profile}/>
+                </Switch>
+              </AppStyles>
             </AuthWrapper>
           </Router>
         </Auth0Provider>
       </div>
-    </AppStyles>
 
   );
 }

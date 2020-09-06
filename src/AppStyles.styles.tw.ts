@@ -2,7 +2,7 @@ import styled from "styled-components";
 import tw from "twin.macro";
 
 const AppStyles = styled.div.attrs({
-    className: "w-full h-screen flex flex-col items-center justify-center"
+    className: "w-full h-screen flex flex-col items-center"
 })`
   & {
     h1 {
@@ -19,9 +19,6 @@ const AppStyles = styled.div.attrs({
     }
     li {
       ${tw`mr-5`}
-    }
-    a {
-      ${tw`text-blue-500 hover:text-gray-500 hover:underline`}
     }
   }
 `;
